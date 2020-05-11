@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core";
  * @function GeoSearch
  **/
 // https://blog.logrocket.com/how-to-use-react-leaflet/
+//https://wiki.openstreetmap.org/wiki/DE:Nominatim
 
 const useStyles = makeStyles((theme) => ({
   map: {
@@ -33,13 +34,22 @@ const GeoSearch = (props) => {
   return (
     <div className={classes.map}>
       <Map
-        center={[state.lat, state.lng]}
+        center={props.position}
         zoom={state.zoom}
         ondragend={(e) => {
           console.log(e.target.getBounds());
         }}
       >
         <TileLayer url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+        <Marker position={[state.lat, state.lng]}>
+          <Popup> sdffsdff fsf f fsf</Popup>
+        </Marker>
+        <Marker position={[state.lat + 0.02, state.lng]}>
+          <Popup>Hallo welt</Popup>
+        </Marker>
+        <Marker position={[state.lat - 0.03, state.lng + 0.01]}>
+          <Popup>Hallo welt</Popup>
+        </Marker>
       </Map>
     </div>
   );
