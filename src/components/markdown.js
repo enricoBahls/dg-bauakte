@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown/with-html";
 import { TextField, makeStyles, Grid } from "@material-ui/core";
 
@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
 const Markdown = (props) => {
   const classes = useStyles();
   const [text, setText] = useState("");
+  
+  useEffect(() => {
+    props.onChange(text);
+  }, [text])
 
   return (
     <Grid container alignItems="stretch">

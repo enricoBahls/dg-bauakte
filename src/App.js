@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import StepperFile from "./components/stepper_file";
@@ -8,6 +8,8 @@ import Map from "@material-ui/icons/Map";
 import GeoSearch from "./components/search";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SearchByAddress from "./components/geoAdress";
+import ax from 'axios';
+import Login from "./components/login";
 
 function App() {
   const [position, setPosition] = useState([51.505, -0.09]);
@@ -16,8 +18,25 @@ function App() {
     console.log(position);
     setPosition(position);
   };
+
+  useEffect(()=>{
+    console.log("mount app");
+    let headers={
+      'X-Username':'Administrator',
+      'X-Password':'Data230Global',
+    };
+
+    ax.get('http://localhost/RESTfulAPI/csrest/v1.0/auth/logon?applClass=Common&progId=Standard"',{headers:headers}).then((result)=>{
+    console.log(result);
+   
+
+    });
+
+  },[])
+
   return (
     <div className="App">
+      <Login>
       <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" href="/new">
@@ -31,6 +50,7 @@ function App() {
       </AppBar>
       <Router>
         <Switch>
+          
           <Route path="/new" component={StepperFile} exact />
 
           <Route
@@ -40,6 +60,7 @@ function App() {
           />
         </Switch>
       </Router>
+      </Login>
     </div>
   );
 }

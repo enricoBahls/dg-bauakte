@@ -75,11 +75,11 @@ const SearchByAddress = (props) => {
         <Menu
           open={open}
           onClose={handleSearchClose}
-          anchorEl={menuRef}
+          //anchorEl={menuRef}
           keepMounted
         >
           {addressList.map((item, i) => (
-            <MenuItem value={i} onClick={handlePlaceSelect}>
+            <MenuItem key={i} value={i} onClick={handlePlaceSelect}>
               {item.display_name}
             </MenuItem>
           ))}

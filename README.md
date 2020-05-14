@@ -66,3 +66,46 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+# Prfeflight for IIS (Cors) 
+
+* install this first
+
+https://www.iis.net/downloads/microsoft/iis-cors-module
+
+* then add this to the webconf 
+
+https://docs.microsoft.com/en-us/iis/extensions/cors-module/cors-module-configuration-reference
+
+
+``` xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <location path="." inheritInChildApplications="false">
+    <system.webServer>
+      <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModuleV2" resourceType="Unspecified" />
+      </handlers>
+      <aspNetCore processPath="dotnet" arguments=".\RESTfulAPI.Service.dll" stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout" hostingModel="inprocess" />
+
+     <cors enabled="true" failUnlistedOrigins="true">
+            <add origin="*" >
+          
+           
+              <allowHeaders allowAllRequestedHeaders="true">
+                    <add header="x-username" />
+                    <add header="X-password" />
+                    <add header="X-archivetoken" />
+                </allowHeaders>
+                <exposeHeaders>
+                    <add header="x-archivetoken" />
+                    
+                </exposeHeaders>
+            </add>
+        </cors>
+
+    </system.webServer>
+  </location>
+</configuration>
+```
