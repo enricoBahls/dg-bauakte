@@ -37,8 +37,12 @@ const Markdown = (props) => {
     props.onChange(text);
   }, [text])
 
+  useEffect(() => {
+    setText(text+props.text)
+  },[props.text])
+
   return (
-    <Grid container alignItems="stretch">
+    <Grid container alignItems="stretch" spacing={1}>
       <Grid item xs={12} sm={6} className={classes.editor}>
         <TextField
           lable="Markdown"
@@ -47,6 +51,9 @@ const Markdown = (props) => {
           onChange={(e) => {
             setText(e.target.value);
           }}
+
+          value={text}
+
         />
       </Grid>
       <Grid item xs={12} sm={6} className={classes.preview}>

@@ -109,3 +109,20 @@ https://docs.microsoft.com/en-us/iis/extensions/cors-module/cors-module-configur
   </location>
 </configuration>
 ```
+
+# GPS
+
+## format 
+https://wiki.openstreetmap.org/wiki/DE:Genauigkeit_von_Koordinaten
+
+## manipulate sensor
+
+https://developers.google.com/web/tools/chrome-devtools/device-mode/geolocation
+
+# Wetter daten
+
+https://openweathermap.org/current
+
+* apikey: 8bdb74b2c7185ea78e9ad61bdc6325d9
+* call api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={your api key}
+

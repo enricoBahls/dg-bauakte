@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+export const getToken=()=>
+{
+  return JSON.parse(localStorage.getItem('hyplogin')).token;
+}
+
 const Login = (props) => {
   const classes = useStyles();
   // const [logedIn, setLogedIn] = useState(false);
@@ -42,7 +47,11 @@ const Login = (props) => {
   };
 
   useEffect(() => {
-    setLogin(JSON.parse(localStorage.getItem("hyplogin")));
+    let loginString=localStorage.getItem("hyplogin");
+    if (loginString!=null)
+    {
+      setLogin(JSON.parse(loginString));
+    }
   }, []);
 
   if (!login.logedIn) {
@@ -73,7 +82,7 @@ const Login = (props) => {
       </Grid>
     );
   } else {
-    return props.children;
+    return props.children ;
   }
 };
 
