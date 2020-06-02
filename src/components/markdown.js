@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     borderStyle: "solid",
     borderWidth: "1px",
     borderRadius: "5px",
-    textAlign: "left",
+    textAlign: "left", 
     //margin: "1px",
   },
   editor: {
@@ -38,7 +38,7 @@ const Markdown = (props) => {
   }, [text])
 
   useEffect(() => {
-    setText(text+props.text)
+    setText(props.text)
   },[props.text])
 
   return (
