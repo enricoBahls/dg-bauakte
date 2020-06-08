@@ -48,6 +48,7 @@ const Login = (props) => {
 
   useEffect(() => {
     let loginString=localStorage.getItem("hyplogin");
+    console.log("env", process.env.REACT_APP_API_URL);
     if (loginString!=null)
     {
       setLogin(JSON.parse(loginString));
@@ -78,6 +79,7 @@ const Login = (props) => {
         </Grid>
         <Grid item xs={12}>
           <Button onClick={dgLogin}>Login</Button>
+         
         </Grid>
       </Grid>
     );
@@ -86,4 +88,4 @@ const Login = (props) => {
   }
 };
 
-export default Login;
+export default Login; 
