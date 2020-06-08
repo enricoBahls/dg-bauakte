@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import StepperFile from "./components/stepper_file";
+import Upload from "./components/upload";
 import { AppBar, Toolbar, IconButton, Step } from "@material-ui/core";
 import CreateNewFolder from "@material-ui/icons/CreateNewFolderOutlined";
 import Map from "@material-ui/icons/Map";
@@ -49,7 +49,7 @@ function App() {
       </AppBar>
       <Router>
         <Switch> 
-          <Route path="/new" render = {(props) => <StepperFile token={props.login}/ > } exact />
+          <Route path="/new" render = {(props) => <Upload token={props.login}/ > } exact />
           <Route
             path="/search"
             render={(props) => <GeoSearch {...props} position={position} />}

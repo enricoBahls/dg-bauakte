@@ -106,9 +106,10 @@ const createHypDocChild = (dbid, docid, data) => {
     .catch((error) => console.log(error));
 };
 
-const StepperFile = () => {
+const Upload = () => {
   const classes = useStyles();
   const [gps, setGps] = useState({ long: 0, lat: 0 });
+  const [templateText, setTemplateText] = useState("");
   const [text, setText] = useState("");
   const [pictures, setPictures] = useState([]);
   const onDrop = (picture) => {
@@ -137,6 +138,7 @@ const StepperFile = () => {
         lat: e.coords.latitude,
         long: e.coords.longitude,
       };
+      console.log(`http://api.openweathermap.org/data/2.5/weather?lat=${position.lat}&lon=${position.long}&appid=59be8b11569f2847a990858f19dcaed5`)
       let response = await ax.get(
         `http://api.openweathermap.org/data/2.5/weather?lat=${position.lat}&lon=${position.long}&appid=59be8b11569f2847a990858f19dcaed5`
       );
@@ -146,7 +148,7 @@ const StepperFile = () => {
 
       const kelvinToCel = 273.15;
       console.log(weather);
-      setText(`
+      setTemplateText(`
 # Objektbeschreibung 
 am ${new Date().toISOString()}
 
@@ -182,7 +184,7 @@ am ${new Date().toISOString()}
           />
         </Grid>
         <Grid item>
-          <Markdown onChange={(t) => console.log(t)} text={text} />
+          <Markdown onChange={(t) =>  setText(t)} text={templateText} />
         </Grid>
         <Grid item xs={6}></Grid>
         <Button variant="contained" color="primary" onClick={createFolder}>
@@ -193,4 +195,4 @@ am ${new Date().toISOString()}
   );
 };
 
-export default StepperFile;
+export default Upload;
