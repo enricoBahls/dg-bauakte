@@ -51,9 +51,7 @@ const Markdown = (props) => {
           onChange={(e) => {
             setText(e.target.value);
           }}
-
           value={text}
-
         />
       </Grid>
       <Grid item xs={12} sm={6} className={classes.preview}>
