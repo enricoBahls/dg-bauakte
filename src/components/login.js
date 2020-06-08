@@ -29,7 +29,7 @@ const Login = (props) => {
     };
 
     ax.get(
-      'http://localhost/RESTfulAPI/csrest/v1.0/auth/logon?applClass=Common&progId=Standard"',
+      `${process.env.REACT_APP_API_URL}/auth/logon?applClass=Common&progId=Standard`,
       { headers: headers }
     )
       .then((response) => {

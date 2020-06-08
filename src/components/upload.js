@@ -82,7 +82,7 @@ const picForm = (file) => {
 const instance = ax.create();
 const createHypDoc = (dbid, data, callback) => {
   return instance
-    .post(`http://localhost/RESTfulAPI/csrest/v1.0/dept/${dbid}/docs`, data, {
+    .post(`${process.env.REACT_APP_API_URL}/dept/${dbid}/docs`, data, {
       headers: {
         "x-archivetoken": getToken(),
       },
@@ -94,7 +94,7 @@ const createHypDoc = (dbid, data, callback) => {
 const createHypDocChild = (dbid, docid, data) => {
   instance
     .post(
-      `http://localhost/RESTfulAPI/csrest/v1.0/dept/${dbid}/docs/${docid}/children`,
+      `${process.env.REACT_APP_API_URL}/dept/${dbid}/docs/${docid}/children`,
       data,
       {
         headers: {

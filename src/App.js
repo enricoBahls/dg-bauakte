@@ -8,25 +8,15 @@ import Map from "@material-ui/icons/Map";
 import ExitToApp from "@material-ui/icons/ExitToApp";
 import GeoSearch from "./components/search";
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
-import SearchByAddress from "./components/geoAdress";
+
 
 
 import Login from "./components/login";
 
 function App() {
-  const [position, setPosition] = useState([51.505, -0.09]);
-
-  const handlePositionSelect = (position) => {
-    console.log(position);
-    setPosition(position);
-  };
-
- 
-
   const logOut = () =>
   {
     localStorage.removeItem ('hyplogin');
-     
   }
 
   return (
@@ -40,8 +30,6 @@ function App() {
           <IconButton edge="start" href="/search">
             <Map />
           </IconButton>
-       
-          <SearchByAddress onSelect={handlePositionSelect} />
           <IconButton edge="end" href="/"  onClick={logOut}>
             <ExitToApp />
           </IconButton>
@@ -52,7 +40,7 @@ function App() {
           <Route path="/new" render = {(props) => <Upload token={props.login}/ > } exact />
           <Route
             path="/search"
-            render={(props) => <GeoSearch {...props} position={position} />}
+            render={(props) => <GeoSearch {...props} />}
             exact
           />
         </Switch>

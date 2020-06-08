@@ -11,11 +11,14 @@ import axios from "axios";
 const SearchByAddress = (props) => {
   const [address, setAddress] = useState({ city: "", street: "" });
   const [addressList, setAddressList] = useState([]);
+  
   const menuRef = createRef();
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const [open, setOpen] = useState(false);
 
   const handleSearch = (e) => {
+    setAnchorEl(e.currentTarget);
     axios
       .get("https://nominatim.openstreetmap.org/search", {
         params: { format: "json", ...address },
@@ -37,7 +40,6 @@ const SearchByAddress = (props) => {
 
   const handleSearchClose = (e) => {
     setOpen(false);
-    //setOpen(true);
   };
 
   const handlePlaceSelect = (e) => {
@@ -74,8 +76,8 @@ const SearchByAddress = (props) => {
         </IconButton>
         <Menu
           open={open}
+          anchorEl={anchorEl}
           onClose={handleSearchClose}
-          //anchorEl={menuRef}
           keepMounted
         >
           {addressList.map((item, i) => (
