@@ -26,7 +26,7 @@ function App() {
         <Toolbar>
           <IconButton edge="start" href="/new">
             <CreateNewFolder />
-          </IconButton>
+          </IconButton> 
           <IconButton edge="start" href="/search">
             <Map />
           </IconButton>

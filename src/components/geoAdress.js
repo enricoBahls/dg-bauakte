@@ -3,10 +3,7 @@ import { InputBase, IconButton, Grid, Menu, MenuItem } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 
-/**
- * @author
- * @function SearchByAdress
- **/
+
 
 const SearchByAddress = (props) => {
   const [address, setAddress] = useState({ city: "", street: "" });
@@ -26,7 +23,6 @@ const SearchByAddress = (props) => {
       .then((response) => {
         setAddressList(response.data);
       });
-    //setOpen(true);
   };
 
   useEffect(() => {

@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const GeoSearch = (props) => {
   const classes = useStyles();
   const [position, setPosition] = useState([49.13, 9.15]);
