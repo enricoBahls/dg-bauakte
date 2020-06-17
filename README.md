@@ -123,6 +123,6 @@ https://developers.google.com/web/tools/chrome-devtools/device-mode/geolocation
 
 https://openweathermap.org/current
 
-* apikey: 8bdb74b2c7185ea78e9ad61bdc6325d9
+* apikey: XXXX
 * call api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={your api key}
 
